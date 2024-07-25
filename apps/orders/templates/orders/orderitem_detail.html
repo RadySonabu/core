@@ -1,0 +1,18 @@
+{% include "default/index.html" %}
+{% block content%}
+order items
+ {% for order_item in order_items %}
+        <div class="flex-column flex-wrap mb-3 ">
+            <div class="card " style="width: 12rem;">
+                <div class="card-body">
+                  <h5 class="card-title">x{{order_item.quantity}} {{order_item.item.name}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted"></h6>
+                  
+                </div>
+              </div>
+        </div>
+{% endfor %}
+<a href={% url 'orderitem_create' %}>
+    <button type="button" class="m-5 btn btn-primary float-end fixed-bottom">Add Item</button>
+</a> 
+{% endblock content%}
