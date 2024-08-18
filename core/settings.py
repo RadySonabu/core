@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "apps.default",
     "apps.items",
     "apps.orders",
+    "apps.inventories",
+    "apps.branches",
     "bootstrap5",
 ]
 
