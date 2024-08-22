@@ -10,8 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
+from dotenv import load_dotenv
 from pathlib import Path
 
+
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-^e%bs!z2i+tguj@v3ugh7#ftz$q-#8anmx!i3o+1hi7uth)@3)"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -86,6 +90,20 @@ DATABASES = {
     }
 }
 
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": os.getenv("PGDATABASE"),
+#         "USER": os.getenv("PGUSER"),
+#         "PASSWORD": os.getenv("PGPASSWORD"),
+#         "HOST": os.getenv("PGHOST"),
+#         "PORT": os.getenv("PGPORT", 5432),
+#         "OPTIONS": {
+#             "sslmode": "require",
+#         },
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

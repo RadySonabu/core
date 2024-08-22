@@ -9,3 +9,6 @@ class Branch(AddressBaseModel):
 
     def __str__(self) -> str:
         return f"Branch: {self.name} | {self.city}, {self.street}"
+
+    class Meta:
+        verbose_name_plural = "branches"
