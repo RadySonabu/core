@@ -2,27 +2,7 @@ from django.db import models
 
 from apps.branches.models import Branch
 from apps.default.models import BaseModel
-
-
-IN_STOCK = "in_stock"
-OUT_OF_STOCK = "out_of_stock"
-DISCONTINUED = "discontinued"
-ITEM_STATUS_CHOICES = [
-    ("in_stock", "In Stock"),
-    ("out_of_stock", "Out of Stock"),
-    ("discontinued", "Discontinued"),
-]
-
-
-KG = "kilograms"
-L = "liters"
-GAL = "gallons"
-
-MEASUREMENT_CHOICES = [
-    (KG, "Kilograms"),
-    (L, "Liters"),
-    (GAL, "Gallons"),
-]
+from .constants import Constants
 
 
 class InventoryCategory(BaseModel):
@@ -50,24 +30,25 @@ class InventoryItem(BaseModel):
     quantity = 20
     purchase_price = 4000
     status = in_stock
-
+    packaging = gallon
     """
 
-    storage = models.ForeignKey(Branch, on_delete=models.CASCADE)
+    branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     category = models.ForeignKey(
         InventoryCategory, on_delete=models.CASCADE, related_name="inventory_items"
     )
     name = models.CharField(max_length=255, unique=True)
     description = models.TextField(blank=True, null=True)
-    measurement = models.CharField(max_length=50, choices=MEASUREMENT_CHOICES)
+    measurement = models.CharField(max_length=50, choices=Constants.MEASUREMENT_CHOICES)
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
     purchase_price = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.CharField(
-        max_length=15, choices=ITEM_STATUS_CHOICES, default=IN_STOCK
+        max_length=15, choices=Constants.ITEM_STATUS_CHOICES, default=Constants.IN_STOCK
     )
+    packaging = models.CharField(max_length=50, choices=Constants.PACKAGING_CHOICES)
 
     def __str__(self) -> str:
-        return f"{self.storage.name} | {self.category.name} | {self.name} | x{self.quantity} {self.measurement}"
+        return f"{self.branch.name} | {self.category.name} | {self.name} | x{self.quantity} {self.measurement}"
 
     @property
     def is_in_stock(self):
