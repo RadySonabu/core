@@ -49,6 +49,11 @@ INSTALLED_APPS = [
     "bootstrap5",
     "rest_framework",
     "corsheaders",
+    "crispy_forms",
+    "crispy_bootstrap5",
+    "django_browser_reload",
+    "django_tables2",
+    "django_bootstrap5",
 ]
 
 MIDDLEWARE = [
@@ -60,6 +65,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -150,3 +156,15 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap5-responsive.html"
+DJANGO_TABLES2_TABLE_ATTRS = {
+    "class": "table table-hover",
+    "thead": {
+        "class": "table-light",
+    },
+}
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"

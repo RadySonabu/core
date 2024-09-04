@@ -3,26 +3,27 @@ class Constants:
     OUT_OF_STOCK = "out_of_stock"
     DISCONTINUED = "discontinued"
     ITEM_STATUS_CHOICES = [
-        ("in_stock", "In Stock"),
-        ("out_of_stock", "Out of Stock"),
-        ("discontinued", "Discontinued"),
+        (IN_STOCK, "In Stock"),
+        (OUT_OF_STOCK, "Out of Stock"),
+        (DISCONTINUED, "Discontinued"),
     ]
 
-    KG = "kilograms"
-    L = "liters"
-    GAL = "gallons"
-
+    KG = "KGS"
+    L = "LIT"
+    GAL = "GAL"
+    PCS = "PCS"
     MEASUREMENT_CHOICES = [
-        (KG, "Kilograms"),
-        (L, "Liters"),
-        (GAL, "Gallons"),
+        (KG, "KGS"),
+        (L, "LIT"),
+        (GAL, "GAL"),
+        (PCS, "PCS"),
     ]
 
-    BOTTLE = "Bottle"
-    GALLON = "Gallon"
-    SACK = "Sack"
-    TRAY = "Tray"
-    OTHERS = "Others"
+    BOTTLE = "BOT"
+    GALLON = "GAL"
+    SACK = "SCK"
+    TRAY = "TRY"
+    OTHERS = "OTHERS"
     PACKAGING_CHOICES = [
         (BOTTLE, BOTTLE),
         (GALLON, GALLON),

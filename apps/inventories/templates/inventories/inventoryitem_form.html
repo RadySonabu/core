@@ -1,0 +1,14 @@
+{% include "default/index.html" %}
+{% load crispy_forms_tags  %}
+
+{% block content%}
+<div class="m-2 container">
+    Inventory
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock content%}
