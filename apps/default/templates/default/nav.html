@@ -9,7 +9,7 @@
         <a class="nav-link text-white" href={% url 'pending_or_done_orders' %}>Order</a>
       </li>
       <li class="nav-item text-center flex-fill bg-primary bg-gradient">
-        <a class="nav-link text-white" href="#">Inventory</a>
+        <a class="nav-link text-white" href={% url 'inventory_item_list' %}>Inventory</a>
       </li>
   </ul>
 </div>
@@ -20,7 +20,7 @@
         <a class="nav-link text-white" href={% url 'home' %}>Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">Order</a>
+        <a class="nav-link text-white" href={% url 'pending_or_done_orders' %}>Order</a>
         
       </li>
       <li class="nav-item">

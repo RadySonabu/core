@@ -19,5 +19,5 @@ class InventoryItemForm(forms.ModelForm):
             }
         )
 
-        default_branch = Branch.objects.get(name="Balay Pater - PH. 5Y")
+        default_branch = Branch.objects.get(name="BP1")
         self.fields["branch"].initial = default_branch

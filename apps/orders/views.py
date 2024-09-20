@@ -17,9 +17,17 @@ def orders_page(request):
 class PendingOrDone(TemplateView):
     template_name = "orders/pending_or_done_orders.html"
 
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        print(self.request.path)
+        print(kwargs)
+        return {
+            'page': 'order',
+        }
 
 class PendingOrderListView(ListView):
     model = Order
+    template_name = "orders/order_list.html"
+
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         orders = Order.objects.filter(status="P")
@@ -28,6 +36,7 @@ class PendingOrderListView(ListView):
 
 class DoneOrderListView(ListView):
     model = Order
+    template_name = "orders/order_list.html"
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         orders = Order.objects.filter(status="D")

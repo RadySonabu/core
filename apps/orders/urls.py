@@ -2,7 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # path("", views.orders_page),
     path("", views.PendingOrDone.as_view(), name="pending_or_done_orders"),
     path("pending/", views.PendingOrderListView.as_view(), name="pending_order_list"),
     path("done/", views.DoneOrderListView.as_view(), name="done_order_list"),

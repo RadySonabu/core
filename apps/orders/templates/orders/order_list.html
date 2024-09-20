@@ -1,7 +1,38 @@
 {% include "default/index.html" %}
-{% include "orders/pending_or_done_orders.html" %}
 {% block content%}
 
+{% if '/orders/pending/' in request.path  %}
+<div class="d-flex  justify-content-around">
+  <a class="text-white bg-success flex-fill text-center" href={% url 'pending_order_list' %} style="text-decoration:none;">
+    <div class=" m-2" >
+        <h5 class="card-title">Pending Orders</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{order.status}}</h6>
+    </div>
+  </a>
+  <a class="text-white bg-primary flex-fill text-center" href={% url 'done_order_list' %} style="text-decoration:none;">
+    <div class=" m-2" >
+        <h5 class="card-title">Done Orders</h5>
+        
+    </div>
+  </a>
+</div>
+{% else %}
+<div class="d-flex  justify-content-around">
+  <a class="text-white bg-primary flex-fill text-center" href={% url 'pending_order_list' %} style="text-decoration:none;">
+    <div class=" m-2" >
+        <h5 class="card-title">Pending Orders</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{order.status}}</h6>
+        
+    </div>
+  </a>
+  <a class="text-white bg-success flex-fill text-center" href={% url 'done_order_list' %} style="text-decoration:none;">
+    <div class=" m-2" >
+        <h5 class="card-title">Done Orders</h5>
+        
+    </div>
+  </a>
+</div>
+{% endif %}
 <div class="d-flex flex-wrap m-3">
     {% for order in orders %}
     <a href={% url 'orderitem_list' order.id%}>
