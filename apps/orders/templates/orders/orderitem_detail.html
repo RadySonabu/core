@@ -12,7 +12,10 @@ order items
               </div>
         </div>
 {% endfor %}
-<a href={% url 'orderitem_create' %}>
-    <button type="button" class="m-5 btn btn-primary float-end fixed-bottom">Add Item</button>
+<div class="flex"><a href={% url 'orderitem_create' pk=order_id %}>
+  <button type="button" class="m-5 btn btn-primary">Add Item</button>
 </a> 
+<a href={% url 'order_update' pk=order_id %}>
+<button type="button" class="m-5 btn btn-primary">Update Order</button>
+</a> </div>
 {% endblock content%}
