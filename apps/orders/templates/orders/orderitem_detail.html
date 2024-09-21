@@ -12,6 +12,7 @@ order items
               </div>
         </div>
 {% endfor %}
+TOTAL: {{total_price.total}}
 <div class="flex"><a href={% url 'orderitem_create' pk=order_id %}>
   <button type="button" class="m-5 btn btn-primary">Add Item</button>
 </a> 
